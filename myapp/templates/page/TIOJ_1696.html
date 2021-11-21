@@ -1,0 +1,167 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+    <title>極速車神大佬</title>
+    <script src="{% static js/NPSC2014_H.js %}"></script>
+    <meta name="description" content="首頁">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../css/NPSC2014_H.css" rel="stylesheet" type="text/css">
+    <link href="../css/prism.css" rel="stylesheet" type="text/css">
+    <script src="../js/prism.js"></script>
+    <link rel="shortcut icon" href="https://scontent.ftpe2-1.fna.fbcdn.net/v/t1.6435-9/157925573_2672980012993763_89730427363002411_n.jpg?_nc_cat=111&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=0jrO8B8oHUEAX8QLUr4&_nc_ht=scontent.ftpe2-1.fna&oh=0f9613450a8905d1212db14430df92fc&oe=60BC6B79">
+</head>
+<body>
+    <div id="big">
+        <strong>
+            <ul>
+                <li style="float: left;margin: 15px;padding: 0%;"><button onclick="redirect(1)" class="top1" >極速車神大佬の部落格</button></li>
+                <li class="lr" onclick="redirect(2)"><button class="top1">最新文章</button></li>
+                <li class="lr" onclick="redirect(3)"><button class="top1">訓練題庫</button></li>
+                <li class="lr" onclick="redirect(4)"><button class="top1">自我介紹&nbsp&&nbsp歷程記錄</button></li>
+            </ul>
+        </strong>
+    </div>
+    <div id="small">
+        <center>
+            <strong>
+                <ul>
+                    <li><button onclick="redirect(1)" class="top2">極速車神大佬の部落格</button></li>
+                    <li onclick="redirect(2)"><button class="top2">最新文章</button></li>
+                    <li onclick="redirect(3)"><button class="top2">訓練題庫</button></li>
+                    <li onclick="redirect(4)"><button class="top2">自我介紹&nbsp&&nbsp歷程記錄</button></li>
+                </ul>
+            </strong>
+        </center>
+    </div>
+    <div class="clear"></div>
+    <hr>
+    <div class="middiv">
+        <h1 style="text-align: center;"><a href="https://tioj.ck.tp.edu.tw/problems/1696">TIOJ_1696 Problem F 橘子園保衛戰</a></h1>
+        <h2>裸重心剖分 + BIT ( 聽說不用? ) 但是我寫了很久==</h2>
+    </div>
+    <div class="middiv">
+        <h2 style="margin: 0%;"><center>CODE</center></h2>
+        <br>
+        <pre >
+<code class="++ language-c">#include &lt;bits/stdc++.h&gt;
+#define pb push_back
+#define pii pair&lt;int,int&gt;
+#define tup tuple&lt;int,int,int&gt;
+#define g0 get&lt;0&gt;(i)
+#define g1 get&lt;1&gt;(i)
+#define g2 get&lt;2&gt;(i)
+#define f first
+#define s second
+#define lowbit(x) (x&amp;-x)
+#define endl &#39;\n&#39;
+#define mid ((l+r)&gt;&gt;1)
+#define i1 (i&lt;&lt;1)
+#define i2 (i1+1)
+#define Hash(x,y) (maxn*x+y)
+#define iofaster ios::sync_with_stdio(0);cin.tie(0)
+#define fr(a) freopen((a),&quot;r&quot;,stdin)
+#define fw(a) freopen((a),&quot;w&quot;,stdout)
+using namespace std;
+const int maxn = 1e5 + 5 ;
+const int mod = 1e9 + 7 ;
+const int INF = 1e9 + 9 ;
+vector&lt;int&gt;g[maxn];
+int k[maxn],sz[maxn],cnt[maxn+5],ans[maxn],n;
+bool del[maxn];
+void add(int x,int v) {
+	x++;
+	while(x&lt;=n+1) {
+		cnt[x]+=v;
+		x+=lowbit(x);
+	}
+}
+int cal(int x,int n) {
+	if(x&gt;n) x=n;
+	int ret=0;
+	x++;
+	while(x&gt;0) {
+		ret+=cnt[x];
+		x-=lowbit(x);
+	}
+	return ret;
+}
+void get_sz(int x,int p) {
+	sz[x]=1;
+	for(auto i:g[x]) {
+		if(i==p or del[i]) continue;
+		get_sz(i,x);
+		sz[x]+=sz[i];
+	}
+}
+int get_cen(int x,int n,int p) {
+	for(auto i:g[x]) {
+		if(i==p or del[i]) continue;
+		if(sz[i]&gt;n/2) return get_cen(i,n,x);
+	}
+	return x;
+}
+vector&lt;pii&gt;v;
+void dfs(int x,int p,int level) {
+	add(level,1);
+	v.pb({x,level});
+	for(auto i:g[x]) {
+		if(i==p or del[i]) continue;
+		dfs(i,x,level+1);
+	}
+}
+void build(int x) {
+	get_sz(x,-1);
+	int cen=get_cen(x,sz[x],-1);
+	del[cen]=true;
+	fill(cnt,cnt+sz[x]+5,0);
+	vector&lt;tup&gt;vet;
+	for(auto i:g[cen]) {
+		if(del[i]) continue;
+		dfs(i,cen,1);
+		for(auto i:v) vet.pb({i.f,cal(k[i.f]-i.s,sz[x]),i.s});
+		while(!v.empty()) {
+			auto i=v.back();
+			add(i.s,-1);
+			v.pop_back();
+		}
+	}
+	add(0,1);
+	for(auto [a,b,c]:vet) add(c,1); 
+	for(auto [u,val,level]:vet) {
+		ans[u]+=cal(k[u]-level,sz[x])-val;
+	}
+	ans[cen]+=cal(k[cen],sz[x]);
+	for(auto i:g[cen]) {
+		if(del[i]) continue;
+		build(i);
+	}
+}
+signed main()
+{
+	iofaster;
+	cin&gt;&gt;n;	
+	for(int i=1;i&lt;=n;i++) cin&gt;&gt;k[i];
+	for(int i=1;i&lt;n;i++) {
+		int a,b;
+		cin&gt;&gt;a&gt;&gt;b;
+		g[a].pb(b),g[b].pb(a);
+	}
+	build(1);
+	for(int i=1;i&lt;=n;i++) cout&lt;&lt;ans[i]&lt;&lt;endl;
+}
+
+            </code>
+        </pre>
+    </div>
+    <div class="clear"></div>
+    <div class="middiv">
+        <center>
+            <button class="vertical1" onclick="redirect(5)"><img src="../image/favicon.ico" class="cc">&nbspTIOJ</button>
+            <button class="vertical1" onclick="redirect(6)"><img src="../image/favicon (1).ico" class="cc">&nbspcodeforces</button>
+            <button class="vertical1" onclick="redirect(7)"><img src="../image/favicon.png" class="cc">&nbspatcoder</button>
+            <button class="vertical1" onclick="redirect(8)"><img src="../image/unnamed.png" class="cc">&nbspfacebook</button>
+            <button class="vertical1" onclick="redirect(9)"><img src="../image/favicon_qp2.png" class="cc">&nbspgoogle forms</button>
+        </center>
+    </div>
+    <div style="height: 20px;"></div>
+</body>
