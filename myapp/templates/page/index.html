@@ -34,6 +34,9 @@
     <div class="clear"></div>
     <hr>
     <div class="middiv">
+        {% if user.is_authenticated %}
+        感謝您登入 !
+        {% endif %}
         我目前是一個很嫩的競程學習者拉www<br>
         這邊會記錄一些我所參加過的活動、比賽、寫過的題目等等<br>
         電神看到不要笑⊙﹏⊙(其實沒人會看到你的網站吧
@@ -56,4 +59,10 @@
             <button class="vertical1" onclick="redirect(9)"><img src="{% static 'image/favicon_qp2.png' %}" class="cc">&nbspgoogle forms</button>
         </center>
     </div>
+    {% if user.is_authenticated %}
+    <form method="POST" action="logout">
+        {% csrf_token %}
+        <input type="submit" />
+    </form>
+    {% endif %}
 </body>

@@ -1,5 +1,7 @@
 <h1> Sign up below</h1>
-
+{% for message in messages %}
+<h5>{{message}}</h5>
+{% endfor %}
 <form method="POST" action="register">
     {% csrf_token %}
     <p>Username: </p>
