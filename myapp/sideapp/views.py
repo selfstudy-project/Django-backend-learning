@@ -1,23 +1,17 @@
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
-from .models import Code
+from .models import Post
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
+import markdown
 
 def index(request) :
-    code1 = Code()
-    code1.code = '#include <bits/stdc++.h>'
-    code1.name = 'first c++ code'
-    return render(request, 'page/index.html', {'feature' : code1})
+    return render(request, 'page/index.html')
     
-def page(request, pk) :
-    string = 'page/' + pk 
-    return render(request, string)
-
-def code(request) :
-    allcodes = Code.objects.all()
-    return render(request, 'page/code.html', {'allcodes' : allcodes})
-
+def page(request, num) :
+    detail = Post.objects.filter(id = num)
+    detail = detail[0]
+    return render(request, 'page/code.html', {'detail' : detail})
 def register(request) :
     if request.method == 'POST' :
         username = request.POST['username']
@@ -36,7 +30,7 @@ def register(request) :
                 user.save()
                 return redirect('login')
         else :
-            messages.info('Password not the same !')
+            messages.info(request, 'Password not the same !')
             return redirect('register')
     return render(request, 'page/register.html')
 
@@ -44,7 +38,6 @@ def login(request) :
     if request.method == 'POST' :
         username = request.POST['username']
         password = request.POST['password']
-
         user = auth.authenticate(username = username, password = password)
 
         if user is not None :
@@ -53,10 +46,36 @@ def login(request) :
         else :
             messages.info(request, 'Wrong username or password')
             return redirect('login')
-
-
     return render(request, 'page/login.html')
 
 def logout(request) :
     auth.logout(request)
     return redirect('index')
+
+def sf(request) :
+    return render(request, 'page/sf.html')
+
+def ls(request) :
+    return render(request, 'page/ls.html')
+
+def pf(request) :
+    return render(request, 'page/pf.html')
+
+def addpost(request) :
+
+    if request.method == 'POST' :
+        title = request.POST['title']
+        content = request.POST['content']
+        content = markdown.markdown(content, extensions = [
+            'markdown.extensions.extra',
+            'markdown.extensions.codehilite',
+        ])
+        tags = request.POST['tags']
+        author = request.POST['author']
+        id = Post.objects.count() + 1
+        newpost = Post.objects.create(title = title, content = content, tags = tags, author = author, id = id)
+        newpost.save()
+        messages.info(request, '新增成功 !')
+        return redirect('addpost')
+    else :
+        return render(request, 'page/addpost.html')

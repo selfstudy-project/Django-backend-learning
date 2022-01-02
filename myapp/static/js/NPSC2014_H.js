@@ -24,13 +24,14 @@ window.onload = function(){
     }
 }
 function redirect(a) {
-    if(a==1) window.location.href=`../index.html`;
-    else if(a==2) window.location.href=`ls.html`;
-    else if(a==3) window.location.href=`pf.html`;
-    else if(a==4) window.location.href=`sf.html`;
+    if(a==1) document.location.href=`index`;
+    else if(a==2) window.location.href=`ls`;
+    else if(a==3) window.location.href=`pf`;
+    else if(a==4) window.location.href=`sf`;
     else if(a==5) window.location.href=`https://tioj.ck.tp.edu.tw/users/gary940610`;
     else if(a==6) window.location.href=`https://codeforces.com/profile/gary940610`;
     else if(a==7) window.location.href=`https://atcoder.jp/users/gary940610`;
     else if(a==8) window.location.href=`https://www.facebook.com/profile.php?id=100008453702626`;
     else if(a==9) window.location.href=`https://forms.gle/eFBd5bsJqCFvNJwj6`;
 }
+

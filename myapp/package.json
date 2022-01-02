@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "markdown-it": "^12.3.0",
+    "textarea-markdown": "^1.3.1"
+  }
+}
