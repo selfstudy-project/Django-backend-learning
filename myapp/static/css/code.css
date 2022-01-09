@@ -46,14 +46,16 @@ button:hover{
     padding: 10px;
     font-size: 20px;
 }
-.md{
+.mdiv{
     margin-top: 3%;
     margin-left: 10%;
     margin-right: 10%;
-    color: black;
-    border-radius: 6px;
     padding: 10px;
     font-size: 20px;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-left: black;
+    border-right: black;
 }
 .vertical1{
     margin: 10px;
@@ -77,4 +79,7 @@ hr{
 }
 a{
     cursor: pointer;
+}
+pre {
+    padding: 2%;
 }

@@ -1,3 +1,4 @@
+from django.db.models.query import RawQuerySet
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from .models import Post
@@ -67,9 +68,12 @@ def addpost(request) :
         title = request.POST['title']
         content = request.POST['content']
         content = markdown.markdown(content, extensions = [
-            'markdown.extensions.extra',
-            'markdown.extensions.codehilite',
+            'extra',
+            'codehilite',
+            'nl2br',
+            'markdown.extensions.latex',
         ])
+
         tags = request.POST['tags']
         author = request.POST['author']
         id = Post.objects.count() + 1
@@ -79,3 +83,26 @@ def addpost(request) :
         return redirect('addpost')
     else :
         return render(request, 'page/addpost.html')
+def pregister(request) :
+    return register(request)
+
+def plogin(request) :
+    return login(request)
+
+def plogout(request) :
+    return logout(request)
+
+def pindex(request) :
+    return index(request)
+
+def pls(request) :
+    return ls(request)
+
+def ppf(request) :
+    return pf(request)
+
+def psf(request) :
+    return sf(request)
+
+def paddpost(request) :
+    return addpost(request)
