@@ -2,10 +2,10 @@
 <!DOCTYPE html>
 <head>
     <title>極速車神大佬</title>
+    <script src="{% static 'js/sf.js' %}"></script>
     <meta name="description" content="首頁">
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="{% static 'css/addpost.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/sf.css' %}" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="https://scontent.ftpe2-1.fna.fbcdn.net/v/t1.6435-9/157925573_2672980012993763_89730427363002411_n.jpg?_nc_cat=111&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=0jrO8B8oHUEAX8QLUr4&_nc_ht=scontent.ftpe2-1.fna&oh=0f9613450a8905d1212db14430df92fc&oe=60BC6B79">
 </head>
 <body>
@@ -13,6 +13,11 @@
         <strong>
             <ul>
                 <li style="float: left;margin: 15px;padding: 0%;"><button onclick="redirect(1)" class="top1" >極速車神大佬の部落格</button></li>
+                {% if user.is_authenticated == False %}
+                <li class="lr" onclick="redirect(11)"><button class="top1">登入</button></li>
+                {% else %}
+                <li class="lr" onclick="redirect(12)"><button class="top1">設定</button></li>
+                {% endif %}
                 <li class="lr" onclick="redirect(2)"><button class="top1">最新文章</button></li>
                 <li class="lr" onclick="redirect(3)"><button class="top1">訓練題庫</button></li>
                 <li class="lr" onclick="redirect(4)"><button class="top1">自我介紹&nbsp&&nbsp歷程記錄</button></li>
@@ -27,11 +32,16 @@
             <strong>
                 <ul>
                     <li><button onclick="redirect(1)" class="top2">極速車神大佬の部落格</button></li>
+                    {% if user.is_authenticated == False %}
+                    <li onclick="redirect(11)"><button class="top2">登入</button></li>
+                    {% else %}
+                    <li onclick="redirect(12)"><button class="top2">設定</button></li>
+                    {% endif %}
                     <li onclick="redirect(2)"><button class="top2">最新文章</button></li>
                     <li onclick="redirect(3)"><button class="top2">訓練題庫</button></li>
                     <li onclick="redirect(4)"><button class="top2">自我介紹&nbsp&&nbsp歷程記錄</button></li>
                     {% if user.is_authenticated %}
-                    <li onclick="redirect(10)"><button class="top2">自我介紹&nbsp&&nbsp歷程記錄</button></li>
+                    <li onclick="redirect(10)"><button class="top2">新增文章</button></li>
                     {% endif %}
                 </ul>
             </strong>
@@ -39,25 +49,32 @@
     </div>
     <div class="clear"></div>
     <hr>
-    {% for message in messages %}
-    {{message}}
-    {% endfor %}
-    <div class="box">
-        <div class="a" style="border-style: solid;">
-            <form method="POST" action="addpost" style="margin: 5%;">
-                {% csrf_token %}
-                <p>篇名</p><input type="text" name="title" required="required"/>
-                <p>Tags ( 以逗點隔開 )</p><input type="text" name="tags" required="required"/>
-                <p>作者</p><input type="text" name="author" required="required"/>
-                <p>內容</p><textarea name="content" id="content" required="required" style="width: 80%; height: 100px;resize: vertical;"></textarea><br>
-                <input type="submit" value="新增"/>
-            </form>
-        </div>
-        <div class="b" id="checknull">
-            <div id="preview">
-                
-            </div>
-        </div>
+    <div class="middiv">
+        首頁已經有自我介紹了這裡就空著吧(誤<br>
+        基本上，我的目標在現在是能夠進選訓拉<br>
+        不過我的能力也沒那麼厲害，只能循序漸進~<br>
+    </div>
+    <div class="middiv">
+        <h2 style="margin: 0%;"><center>活動&nbsp&&nbsp比賽紀錄</center></h2>
+        <br>
+        <center>
+            <table>
+                <tbody>
+                    <tr>
+                        <th class="change">名稱</th>
+                        <th class="change">獎項</th>
+                    </tr>
+                    <tr>
+                        <td class="change">APCS 2021_01實作</td>
+                        <td class="change">300分(四級分)</td>
+                    </tr>
+                    <tr>
+                        <td class="change">IOICAMP</td>
+                        <td class="change">幸運跟到(JiKuai,FHVirus)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </center>
     </div>
     <div class="clear"></div>
     <div class="middiv">
@@ -69,5 +86,5 @@
             <button class="vertical1" onclick="redirect(9)"><img src="{% static 'image/favicon_qp2.png' %}" class="cc">&nbspgoogle forms</button>
         </center>
     </div>
-    <script src="{% static 'js/addpost.js' %}"></script>
+    <div style="height: 20px;"></div>
 </body>

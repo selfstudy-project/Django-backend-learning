@@ -69,3 +69,31 @@ hr{
 a{
     cursor: pointer;
 }
+input, textarea {
+    border-radius: 0.25rem;
+    border-style: solid;
+    border-width: 2px;
+}
+.box {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 3%;
+}
+.b {
+    float: right; 
+    width: 45%;
+    border-radius: 5px;
+}
+.a {
+    float: left;
+    width: 45%;
+    border-radius: 5px;
+}
+#preview {
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 85%;
+    word-wrap:break-word; 
+    word-break:break-all; 
+    overflow: hidden;
+}

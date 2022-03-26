@@ -11,12 +11,8 @@ urlpatterns = [
     path('pf', views.pf, name = 'pf'),
     path('sf', views.sf, name = 'sf'),
     path('addpost', views.addpost, name = 'addpost'),
-    path('page/register', views.pregister, name = 'pregister'),
-    path('page/login', views.plogin, name = 'plogin'),
-    path('page/logout', views.plogout, name = 'plogout'),
-    path('page/index', views.pindex, name = 'pindex'),
-    path('page/ls', views.pls, name = 'pls'),
-    path('page/pf', views.ppf, name = 'ppf'),
-    path('page/sf', views.psf, name = 'psf'),
-    path('page/addpost', views.paddpost, name = 'paddpost'),
+    path('post/<str:s>', views.post, name = 'post'),
+    path('log_in', views.log_in, name = 'log_in'),
+    path('account', views.account, name = 'account'),
+    path('_register', views._register, name = '_register')
 ]

@@ -2,10 +2,10 @@
 <!DOCTYPE html>
 <head>
     <title>極速車神大佬</title>
-    <script src="{% static 'js/index.js' %}"></script>
+    <script src="{% static 'js/ls.js' %}"></script>
     <meta name="description" content="首頁">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="{% static 'css/index.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/ls.css' %}" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="https://scontent.ftpe2-1.fna.fbcdn.net/v/t1.6435-9/157925573_2672980012993763_89730427363002411_n.jpg?_nc_cat=111&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=0jrO8B8oHUEAX8QLUr4&_nc_ht=scontent.ftpe2-1.fna&oh=0f9613450a8905d1212db14430df92fc&oe=60BC6B79">
 </head>
 <body>
@@ -13,6 +13,11 @@
         <strong>
             <ul>
                 <li style="float: left;margin: 15px;padding: 0%;"><button onclick="redirect(1)" class="top1" >極速車神大佬の部落格</button></li>
+                {% if user.is_authenticated == False %}
+                <li class="lr" onclick="redirect(11)"><button class="top1">登入</button></li>
+                {% else %}
+                <li class="lr" onclick="redirect(12)"><button class="top1">設定</button></li>
+                {% endif %}
                 <li class="lr" onclick="redirect(2)"><button class="top1">最新文章</button></li>
                 <li class="lr" onclick="redirect(3)"><button class="top1">訓練題庫</button></li>
                 <li class="lr" onclick="redirect(4)"><button class="top1">自我介紹&nbsp&&nbsp歷程記錄</button></li>
@@ -27,11 +32,16 @@
             <strong>
                 <ul>
                     <li><button onclick="redirect(1)" class="top2">極速車神大佬の部落格</button></li>
+                    {% if user.is_authenticated == False %}
+                    <li onclick="redirect(11)"><button class="top2">登入</button></li>
+                    {% else %}
+                    <li onclick="redirect(12)"><button class="top2">設定</button></li>
+                    {% endif %}
                     <li onclick="redirect(2)"><button class="top2">最新文章</button></li>
                     <li onclick="redirect(3)"><button class="top2">訓練題庫</button></li>
                     <li onclick="redirect(4)"><button class="top2">自我介紹&nbsp&&nbsp歷程記錄</button></li>
                     {% if user.is_authenticated %}
-                    <li onclick="redirect(10)"><button class="top2">自我介紹&nbsp&&nbsp歷程記錄</button></li>
+                    <li onclick="redirect(10)"><button class="top2">新增文章</button></li>
                     {% endif %}
                 </ul>
             </strong>
@@ -40,18 +50,11 @@
     <div class="clear"></div>
     <hr>
     <div class="middiv">
-        我目前是一個很嫩的競程學習者拉www<br>
-        這邊會記錄一些我所參加過的活動、比賽、寫過的題目等等<br>
-        電神看到不要笑⊙﹏⊙(其實沒人會看到你的網站吧
+        <center><h2>文章</h2></center>
+        {% for p in posts reversed %}
+        <a href="{% url 'page' p.id %}">{{p.title}}</a><br>
+        {% endfor %}
     </div>
-    <div class="middiv">
-        話說，這是一個同時給APCS的初學者及想要考到5級分的好平台<br>
-        大家可以在這裡找題目寫<br>
-        我的題目會分級，而且會盡量提供題解，不必擔心<br>
-        而假如還是不懂，又或者是我有失誤的話，歡迎透過下方的連結與我聯絡<br>
-        現在是Google表單，看以後會不會學後端ㄅ
-    </div>
-    
     <div class="clear"></div>
     <div class="middiv">
         <center>

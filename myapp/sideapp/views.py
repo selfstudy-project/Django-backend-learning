@@ -7,12 +7,12 @@ from django.contrib import messages
 import markdown
 
 def index(request) :
-    return render(request, 'page/index.html')
+    return render(request, 'index.html')
     
 def page(request, num) :
     detail = Post.objects.filter(id = num)
     detail = detail[0]
-    return render(request, 'page/code.html', {'detail' : detail})
+    return render(request, 'code.html', {'detail' : detail})
 def register(request) :
     if request.method == 'POST' :
         username = request.POST['username']
@@ -33,7 +33,7 @@ def register(request) :
         else :
             messages.info(request, 'Password not the same !')
             return redirect('register')
-    return render(request, 'page/register.html')
+    return render(request, 'register.html')
 
 def login(request) :
     if request.method == 'POST' :
@@ -47,23 +47,23 @@ def login(request) :
         else :
             messages.info(request, 'Wrong username or password')
             return redirect('login')
-    return render(request, 'page/login.html')
+    return render(request, 'login.html')
 
 def logout(request) :
     auth.logout(request)
     return redirect('index')
 
 def sf(request) :
-    return render(request, 'page/sf.html')
+    return render(request, 'sf.html')
 
 def ls(request) :
-    return render(request, 'page/ls.html')
+    posts = Post.objects.all()
+    return render(request, 'ls.html', {'posts' : posts})
 
 def pf(request) :
-    return render(request, 'page/pf.html')
+    return render(request, 'pf.html')
 
 def addpost(request) :
-
     if request.method == 'POST' :
         title = request.POST['title']
         content = request.POST['content']
@@ -73,7 +73,6 @@ def addpost(request) :
             'nl2br',
             'markdown.extensions.latex',
         ])
-
         tags = request.POST['tags']
         author = request.POST['author']
         id = Post.objects.count() + 1
@@ -82,27 +81,14 @@ def addpost(request) :
         messages.info(request, '新增成功 !')
         return redirect('addpost')
     else :
-        return render(request, 'page/addpost.html')
-def pregister(request) :
-    return register(request)
+        return render(request, 'addpost.html')
 
-def plogin(request) :
-    return login(request)
-
-def plogout(request) :
-    return logout(request)
-
-def pindex(request) :
-    return index(request)
-
-def pls(request) :
-    return ls(request)
-
-def ppf(request) :
-    return pf(request)
-
-def psf(request) :
-    return sf(request)
-
-def paddpost(request) :
-    return addpost(request)
+def post(request, s) :
+    problem = Post.objects.filter(tags = s)
+    return render(request, 'post.html', {'problem' : problem})
+def log_in(request) :
+    return render(request, 'login.html')
+def account(request) :
+    return render(request, 'account.html')
+def _register(request) :
+    return render(request, 'register.html')
