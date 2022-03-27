@@ -1,2 +1,2 @@
-dotenv==0.19.2
+python-dotenv==0.19.2
 markdown==3.3.6
