@@ -1,3 +1,3 @@
-web: gunicorn myapp.wsgi:application --log-file - --log-level debug
+web: gunicorn racercpcode.wsgi:application --log-file - --log-level debug
 python manage.py collectstatic --noinput
 manage.py migrate
