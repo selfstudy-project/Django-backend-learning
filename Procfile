@@ -1,1 +1,1 @@
-web: gunicorn racercpcode.wsgi:application --log-file - --log-level debug
+web: gunicorn myapp.wsgi:application --log-file - --log-level debug
