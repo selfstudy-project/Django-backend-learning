@@ -1,3 +1,2 @@
-pathlib==1.0.1
 dotenv==0.19.2
 markdown==3.3.6
