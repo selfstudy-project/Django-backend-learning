@@ -54,7 +54,7 @@ Put my old blog into django and post it to GitHub
 ⌨️ (6:08:46) User Login And Logout In Django
 ⌨️ (6:26:43) Dynamic Url Routing In Django
 ## -------------------
-⌨️ (6:37:24) Postgresql Setup
+⌨️ (6:37:25) Postgresql Setup
 ⌨️ (6:47:23) Building A Blog With Django - Part 1
 ⌨️ (7:12:10) Building A Blog With Django - Part 2
 ⌨️ (7:25:48) Building A Weather App With Django - Part 1
