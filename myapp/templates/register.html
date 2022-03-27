@@ -69,6 +69,14 @@
     </div>
     <div class="clear"></div>
     <hr>
+    {% if user.is_authenticated %}
+    <div class="middiv">
+        <center><h1>已經登入 ! 即將跳轉頁面</h1></center>
+    </div>
+    <script type="text/javascript">
+        setTimeout("location.href=`index`",3000);
+    </script>
+    {% else %}
     <div class="middiv">
         <h1> Sign up below</h1>
         {% for message in messages %}
@@ -87,6 +95,7 @@
             <input type="submit" />
         </form>
     </div>
+    {% endif %}
     <div class="clear"></div>
     <div class="middiv">
         <center>

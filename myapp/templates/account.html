@@ -50,12 +50,21 @@
     </div>
     <div class="clear"></div>
     <hr>
+    {% if user.is_authenticated == False %}
+    <div class="middiv">
+        <center><h1>尚未登入 ! 即將跳轉頁面</h1></center>
+    </div>
+    <script type="text/javascript">
+        setTimeout("location.href=`index`",3000);
+    </script>
+    {% else %}
     <div class="middiv">
         <form method="POST" action="logout">
             {% csrf_token %}
             <input type="submit" style="color: red;" value="登出"></submit>
         </form>
     </div>
+    {% endif %}
     <div class="clear"></div>
     <div class="middiv">
         <center>

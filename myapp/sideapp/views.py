@@ -71,7 +71,7 @@ def addpost(request) :
             'extra',
             'codehilite',
             'nl2br',
-            'markdown.extensions.latex',
+            'tables',
         ])
         tags = request.POST['tags']
         author = request.POST['author']

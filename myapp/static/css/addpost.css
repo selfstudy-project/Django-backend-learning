@@ -46,6 +46,16 @@ button:hover{
     padding: 10px;
     font-size: 20px;
 }
+.middiv2{
+    margin-top: 3%;
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: rgba(43, 220, 122, 0.801);
+    color: white;
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 20px;
+}
 .vertical1{
     margin: 10px;
     color: black;
