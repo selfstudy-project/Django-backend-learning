@@ -61,6 +61,13 @@ def index(request) :
 def page(request, num) :
     detail = Post.objects.filter(id = num)
     detail = detail[0]
+    detail.content = markdown.markdown(detail.content , extensions = [
+        'extra',
+        'codehilite',
+        'nl2br',
+        'tables',
+    ])
+    detail.content = purifier.feed(detail.content)
     return render(request, 'code.html', {'detail' : detail})
 def register(request) :
     if request.method == 'POST' :
@@ -113,17 +120,9 @@ def pf(request) :
     return render(request, 'pf.html')
 
 def addpost(request) :
-    global purifier
     if request.method == 'POST' :
         title = request.POST['title']
         content = request.POST['content']
-        content = markdown.markdown(content, extensions = [
-            'extra',
-            'codehilite',
-            'nl2br',
-            'tables',
-        ])
-        content = purifier.feed(content)
         tags = request.POST['tags']
         author = request.POST['author']
         newpost = Post.objects.create(title = title, content = content, tags = tags, author = author)
