@@ -5,6 +5,55 @@ from .models import Post
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 import markdown
+from purifier.purifier import HTMLPurifier
+
+purifier = HTMLPurifier({
+'div': ['*'], 
+'span': ['attr-2'], 
+'h1': ['*'],
+'h2': ['*'],
+'h3': ['*'],
+'h4': ['*'],
+'h5': ['*'],
+'h6': ['*'],
+'br': ['*'],
+'b': ['*'],
+'i': ['*'],
+'strong': ['*'],
+'em': ['*'],
+'a': ['*'],
+'pre': ['*'],
+'code': ['*'],
+'img': ['*'],
+'tt': ['*'],
+'div': ['*'],
+'ins': ['*'],
+'del': ['*'],
+'sup': ['*'],
+'sub': ['*'],
+'p': ['*'],
+'ol': ['*'],
+'ul': ['*'],
+'table': ['*'],
+'thead': ['*'],
+'tbody': ['*'],
+'tfoot': ['*'],
+'blockquote': ['*'],
+'dl': ['*'],
+'dt': ['*'],
+'dd': ['*'],
+'kbd': ['*'],
+'q': ['*'],
+'samp': ['*'],
+'var': ['*'],
+'hr': ['*'],
+'li': ['*'],
+'tr': ['*'],
+'td': ['*'],
+'th': ['*'],
+'s': ['*'],
+'strike': ['*'],
+})
 
 def index(request) :
     return render(request, 'index.html')
@@ -64,6 +113,7 @@ def pf(request) :
     return render(request, 'pf.html')
 
 def addpost(request) :
+    global purifier
     if request.method == 'POST' :
         title = request.POST['title']
         content = request.POST['content']
@@ -73,10 +123,10 @@ def addpost(request) :
             'nl2br',
             'tables',
         ])
+        content = purifier.feed(content)
         tags = request.POST['tags']
         author = request.POST['author']
-        id = Post.objects.count() + 1
-        newpost = Post.objects.create(title = title, content = content, tags = tags, author = author, id = id)
+        newpost = Post.objects.create(title = title, content = content, tags = tags, author = author)
         newpost.save()
         messages.info(request, '新增成功 !')
         return redirect('addpost')
