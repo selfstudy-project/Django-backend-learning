@@ -70,7 +70,7 @@ td, th{
     text-align: center;
 }
 table {
-    border: 3px solid rgb(16, 168, 179);
+    border: 5px solid rgb(16, 168, 179);
     border-spacing:0;
     border-radius: 5px;
 }

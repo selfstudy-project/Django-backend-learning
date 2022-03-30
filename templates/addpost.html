@@ -67,9 +67,9 @@
         <div class="a" style="border-style: solid;">
             <form method="POST" action="addpost" style="margin: 5%;">
                 {% csrf_token %}
-                <p>篇名</p><input type="text" name="title" required="required"/>
-                <p>Tags</p><input type="text" name="tags" required="required"/>
-                <p>作者</p><input type="text" name="author" required="required"/>
+                <p>篇名</p><input type="text" name="title" required="required" size="10"/>
+                <p>Tags</p><input type="text" name="tags" required="required" size="10"/>
+                <p>作者</p><input type="text" name="author" required="required" size="10"/>
                 <p>內容</p><textarea name="content" id="content" required="required" style="width: 80%; height: 100px;resize: vertical;"></textarea><br>
                 <input type="submit" value="新增"/>
             </form>

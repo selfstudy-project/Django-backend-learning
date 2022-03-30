@@ -49,10 +49,9 @@
     </div>
     <div class="clear"></div>
     <hr>
-    <div class="middiv">
+    <div class="middiv" >
         {% for p in problem %}
         <a href="{% url 'page' p.id %}">{{p.title}}</a><br>
-        <button onclick="open1(0)" class="cli">提示</button><p class="beopen" style="display: none;">{{p.hint}}</p>
         {% endfor %}
     </div>
     <div class="clear"></div>

@@ -9,7 +9,7 @@ from purifier.purifier import HTMLPurifier
 
 purifier = HTMLPurifier({
 'div': ['*'], 
-'span': ['attr-2'], 
+'span': ['*'], 
 'h1': ['*'],
 'h2': ['*'],
 'h3': ['*'],
@@ -57,6 +57,10 @@ purifier = HTMLPurifier({
 
 def index(request) :
     return render(request, 'index.html')
+def change_formula(matched):
+    formula = matched.group(0)
+    formula = formula.replace('_', ' _')
+    return '\n<p>'+formula+'</p>\n'
     
 def page(request, num) :
     detail = Post.objects.filter(id = num)
@@ -66,6 +70,10 @@ def page(request, num) :
         'codehilite',
         'nl2br',
         'tables',
+        'admonition',
+        'legacy_em',
+        'smarty',
+        'sane_lists',
     ])
     detail.content = purifier.feed(detail.content)
     return render(request, 'code.html', {'detail' : detail})
@@ -82,6 +90,8 @@ def register(request) :
             elif User.objects.filter(username=username).exists() :
                 messages.info(request, 'Username already exists !')
                 return redirect('register')
+            elif len(password) < 8:
+                messages.info(request, 'Password should be at least 8 characters')
             else :
                 user = User.objects.create_user(username = username, email = email, password = password)
                 user.save()
