@@ -1,6 +1,7 @@
 body{
     margin: 0%;
     padding: 0%;
+    font-family: salesforce-sans,'Helvetica Neue',helvetica,arial,sans-serif;
 }
 a{
     text-decoration: none;
@@ -47,15 +48,17 @@ button:hover{
     font-size: 20px;
 }
 .vertical1{
-    margin: 10px;
-    color: black;
+    color: gray;
 }
 .top2{
     margin: 2%;
     width: 60%;
 }
-hr{
+hr {
     margin: 0%;
+    border: 0px;
+    background-color: rgb(228, 227, 227);
+    height: 1px;
 }
 #big {
     display: none;

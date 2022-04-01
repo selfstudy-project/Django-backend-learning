@@ -4,23 +4,23 @@ window.onload = function(){
         document.getElementById('big').style.display="block";
         var ac = document.getElementsByClassName('top1')
         for(var i=0;i<ac.length;i++){
-            ac[i].style.fontSize=(w/45)+"px";
+            ac[i].style.fontSize=(w/60)+"px";
         }
         for(var i=0;i<5;i++){
-            document.getElementsByClassName('vertical1')[i].style.fontSize=(w/50)+"px";
-            document.getElementsByClassName('cc')[i].style.height=(w/60)+"px";
+            document.getElementsByClassName('vertical1')[i].style.fontSize=16+"px";
+            document.getElementsByClassName('vertical1')[i].style.height=(w/20)+"px";
         }
     }else if(w>=500){
         document.getElementById('small').style.display="block";
         for(var i=0;i<5;i++){
             document.getElementsByClassName('vertical1')[i].style.fontSize=(w/30)+"px";
-            document.getElementsByClassName('cc')[i].style.height=(w/40)+"px";
+            document.getElementsByClassName('vertical1')[i].style.height=(w/40)+"px";
         }
     }else{
         document.getElementById('small').style.display="block";
         for(var i=0;i<5;i++){
             document.getElementsByClassName('vertical1')[i].style.fontSize=(w/20)+"px";
-            document.getElementsByClassName('cc')[i].style.height=(w/30)+"px";
+            document.getElementsByClassName('vertical1')[i].style.height=(w/30)+"px";
         }
     }
 }

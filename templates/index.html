@@ -12,7 +12,7 @@
     <div id="big">
         <strong>
             <ul>
-                <li style="float: left;margin: 15px;padding: 0%;"><button onclick="redirect(1)" class="top1" >極速車神大佬の部落格</button></li>
+                <li style="float: left;margin: 15px;padding: 0%; "><button onclick="redirect(1)" class="top1" >極速車神大佬の部落格</button></li>
                 {% if user.is_authenticated == False %}
                 <li class="lr" onclick="redirect(11)"><button class="top1">登入</button></li>
                 {% else %}
@@ -61,15 +61,11 @@
         而假如還是不懂，又或者是我有失誤的話，歡迎透過下方的連結與我聯絡<br>
         現在是Google表單，看以後會不會學後端ㄅ
     </div>
-    
-    <div class="clear"></div>
-    <div class="middiv">
-        <center>
-            <button class="vertical1" onclick="redirect(5)"><img src="{% static 'image/favicon.ico' %}">&nbspTIOJ</button>
-            <button class="vertical1" onclick="redirect(6)"><img src="{% static 'image/favicon (1).ico' %}">&nbspcodeforces</button>
-            <button class="vertical1" onclick="redirect(7)"><img src="{% static 'image/favicon.png' %}">&nbspatcoder</button>
-            <button class="vertical1" onclick="redirect(8)"><img src="{% static 'image/unnamed.png' %}">&nbspfacebook</button>
-            <button class="vertical1" onclick="redirect(9)"><img src="{% static 'image/favicon_qp2.png' %}">&nbspgoogle forms</button>
-        </center>
+    <div style="text-align: center; position: fixed;z-index: 1;bottom: 0px; width:100%; background-color: white; padding: 1%;">
+        <a class="vertical1" href="https://tioj.ck.tp.edu.tw/users/gary940610">TIOJ</a>
+        <a class="vertical1" href="https://codeforces.com/profile/gary940610">codeforces</a>
+        <a class="vertical1" href="https://atcoder.jp/users/gary940610">atcoder</a>
+        <a class="vertical1" href="https://www.facebook.com/profile.php?id=100008453702626">facebook</a>
+        <a class="vertical1" href="https://forms.gle/eFBd5bsJqCFvNJwj6">google</a>
     </div>
 </body>
