@@ -57,10 +57,7 @@ purifier = HTMLPurifier({
 
 def index(request) :
     return render(request, 'index.html')
-def change_formula(matched):
-    formula = matched.group(0)
-    formula = formula.replace('_', ' _')
-    return '\n<p>'+formula+'</p>\n'
+
     
 def page(request, num) :
     detail = Post.objects.filter(id = num)
@@ -75,7 +72,7 @@ def page(request, num) :
         'smarty',
         'sane_lists',
     ])
-    detail.content = purifier.feed(detail.content)
+    #detail.content = purifier.feed(detail.content)
     return render(request, 'code.html', {'detail' : detail})
 def register(request) :
     if request.method == 'POST' :
