@@ -113,9 +113,34 @@ def login(request) :
     return render(request, 'login.html')
 
 def logout(request) :
-    auth.logout(request)
+    if request.method == 'POST' :
+        auth.logout(request)
     return redirect('index')
 
+def change_pw(request) :
+    if request.method == 'POST' :
+        oripw = request.POST['oripw']
+        npw = request.POST['npw']
+        _npw = request.POST['_npw']
+        user = request.user
+        username = user.username
+        if(len(npw) < 8 or len(_npw) < 8 or len(oripw) < 8):
+            messages.info(request, 'Password should be at least 8 characters')
+            return redirect('account')
+        elif (user.check_password(oripw)):
+            if(npw == _npw):
+                user.set_password(npw)
+                user.save()
+                user = auth.authenticate(username = username, password = npw)
+                auth.login(request, user)
+                return redirect('index')
+            else:
+                messages.info(request, '新密碼不相同')
+                return redirect('account')
+        else :
+            messages.info(request, '原始密碼不正確')
+            return redirect('account')
+    return redirect('index')
 def sf(request) :
     return render(request, 'sf.html')
 

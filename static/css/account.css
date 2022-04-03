@@ -47,6 +47,15 @@ button:hover{
     padding: 10px;
     font-size: 20px;
 }
+.middiv2{
+    margin-top: 3%;
+    margin-left: 10%;
+    margin-right: 10%;
+    color: white;
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 20px;
+}
 .vertical1{
     color: gray;
 }
@@ -70,9 +79,12 @@ a{
     cursor: pointer;
 }
 input, textarea {
-    border-radius: 0.25rem;
+    border-radius: 10px;
     border-style: solid;
     border-width: 2px;
+}
+input[type="text"], textarea {
+    font-size: 20px;
 }
 .box {
     margin-left: 10%;

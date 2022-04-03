@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <head>
     <title>極速車神大佬</title>
+    <script src="https://kit.fontawesome.com/b9f3a3a0f9.js" crossorigin="anonymous"></script>
     <script src="{% static 'js/account.js' %}"></script>
     <meta name="description" content="首頁">
     <link rel="stylesheet" href="{% static 'md_css/monokai.css' %}">
@@ -58,14 +59,27 @@
         setTimeout("location.href=`index`",3000);
     </script>
     {% else %}
+    {% for message in messages %}
     <div class="middiv">
-        <form method="POST" action="logout">
+    {{message}}
+    </div>
+    {% endfor %}
+    <div class="middiv">
+        <form method="POST" action="logout" style="text-align:right">
             {% csrf_token %}
-            <input type="submit" style="color: red;" value="登出"></submit>
+            <button type="submit" style="padding: 1%;"><i class="fa-solid fa-arrow-right-from-bracket"></i>&nbsplogout</button>
+        </form>
+        <form method="POST" action="change_pw">
+            {% csrf_token %}
+            <p>請輸入原密碼</p><input type="password" name="oripw" required="required" size="10"/>
+            <p>請輸入新密碼</p><input type="password" name="npw" required="required" size="10"/>
+            <p>再次輸入新密碼</p><input type="password" name="_npw" required="required" size="10"/><br>
+            <button type="submit" style="padding: 1%; margin-top: 1%;"><i class="fa-solid fa-check fa-2xl"></i></button>
         </form>
     </div>
     {% endif %}
     <div class="clear"></div>
+
     <div style="text-align: center; position: fixed;z-index: 1;bottom: 0px; width:100%; background-color: white; padding: 1%;">
         <a class="vertical1" href="https://tioj.ck.tp.edu.tw/users/gary940610">TIOJ</a>
         <a class="vertical1" href="https://codeforces.com/profile/gary940610">codeforces</a>

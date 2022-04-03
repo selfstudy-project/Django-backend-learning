@@ -17,5 +17,6 @@ urlpatterns = [
     path('_register', views._register, name = '_register'),
     path('edit/<int:num>', views.edit, name = 'edit'),
     path('edit_post/<int:num>', views.edit_post, name = 'edit_post'),
+    path('change_pw', views.change_pw, name = 'change_pw'),
     
 ]
