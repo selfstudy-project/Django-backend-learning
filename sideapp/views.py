@@ -72,7 +72,7 @@ def page(request, num) :
         'smarty',
         'sane_lists',
     ])
-    #detail.content = purifier.feed(detail.content)
+    detail.content = purifier.feed(detail.content)
     return render(request, 'code.html', {'detail' : detail})
 def register(request) :
     if request.method == 'POST' :
@@ -142,6 +142,20 @@ def addpost(request) :
 def post(request, s) :
     problem = Post.objects.filter(tags = s)
     return render(request, 'post.html', {'problem' : problem})
+
+def edit_post(request, num):
+    detail = Post.objects.filter(id = num)
+    detail = detail[0]
+    return render(request, 'edit.html', {'detail': detail})
+
+def edit(request, num):
+    detail = Post.objects.get(id = num)
+    detail.title = request.POST['title']
+    detail.content = request.POST['content']
+    detail.tags = request.POST['tags']
+    detail.author = request.POST['author']
+    detail.save()
+    return redirect(f'/page/{num}')
 def log_in(request) :
     return render(request, 'login.html')
 def account(request) :

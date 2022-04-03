@@ -1,4 +1,6 @@
 window.onload = function(){
+    document.getElementById("preview").innerHTML = marked.parse(document.querySelector("textarea").innerHTML);
+    document.getElementById("checknull").style.borderStyle="solid";
     const w=document.body.clientWidth;
     if(w>=700){
         document.getElementById('big').style.display="block";
