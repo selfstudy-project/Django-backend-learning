@@ -22,9 +22,12 @@ load_dotenv()
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['racercpcode.herokuapp.com']
+ALLOWED_HOSTS = [
+    'racercpcode.herokuapp.com',
+    '127.0.0.1',
+]
 
 
 # Application definition
@@ -77,10 +80,11 @@ WSGI_APPLICATION = 'myapp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd3n1a1ap7sbv4u',
-        'USER': 'fjalvzdkcvhlfx',
+        'NAME': 'bnjcnurs',
+        'USER': 'bnjcnurs',
         'PASSWORD': os.environ['PASSWORD'],
-        'HOST': 'ec2-34-207-12-160.compute-1.amazonaws.com',
+        'HOST': 'tiny.db.elephantsql.com',
+        'PORT': 5432
     }
 }
 

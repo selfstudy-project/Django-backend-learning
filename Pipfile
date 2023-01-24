@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+gunicorn = "==20.1.0"
+whitenoise = "==6.0.0"
+python-dotenv = "==0.19.2"
+markdown = "==3.3.6"
+django = "==4.0.3"
+psycopg2 = "==2.9.3"
+pillow = "==9.1.0"
+dj-database-url = "==0.5.0"
+dj-static = "==0.0.6"
+html-purifier = "==0.1.9"
+pygments = "==2.11.2"
+
+[dev-packages]
+
+[requires]
+python_version = "3.10"
