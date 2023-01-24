@@ -28,6 +28,8 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'selfstudy-project.onrender.com',
     '172.31.128.147',
+    'racercpcode.tk',
+    'www.racercpcode.tk',
 ]
 
 
