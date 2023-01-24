@@ -26,7 +26,8 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
-    'selfstudy-project.onrender.com'
+    'selfstudy-project.onrender.com',
+    '',
 ]
 
 
