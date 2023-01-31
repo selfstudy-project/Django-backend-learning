@@ -5,11 +5,11 @@ body{
 }
 a{
     text-decoration: none;
-    color: rgb(100, 221, 243);
+    color: rgb(42, 65, 192);
 }
 a:hover{
     text-decoration: none;
-    color:rgb(0, 210, 243);
+    color:rgba(42, 65, 192, 0.813);
 }
 ul{
     list-style: none;
@@ -70,11 +70,10 @@ a{
     cursor: pointer;
 }
 input, textarea {
-    border-radius: 10px;
+    border-radius: 7px;
     border-style: solid;
-    border-width: 2px;
 }
-input[type="text"], textarea {
+input, textarea {
     font-size: 20px;
 }
 .box {

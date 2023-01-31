@@ -5,11 +5,11 @@ body{
 }
 a{
     text-decoration: none;
-    color: rgb(100, 221, 243);
+    color: rgb(42, 65, 192);
 }
 a:hover{
-    text-decoration: blue;
-    color:rgb(0, 210, 243)
+    text-decoration: none;
+    color:rgba(42, 65, 192, 0.813);
 }
 ul{
     list-style: none;
@@ -80,5 +80,5 @@ th, td {
     padding: 7px;
 }
 .change{
-    padding: calc(100% / 100 - 1px);
+    padding: calc(100% / 100 - 0.5px);
 }

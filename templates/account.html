@@ -71,15 +71,15 @@
         </form>
         <form method="POST" action="change_pw">
             {% csrf_token %}
-            <p>請輸入原密碼</p><input type="password" name="oripw" required="required" size="10"/>
-            <p>請輸入新密碼</p><input type="password" name="npw" required="required" size="10"/>
-            <p>再次輸入新密碼</p><input type="password" name="_npw" required="required" size="10"/><br>
+            <p>請輸入原密碼</p><input type="password" name="oripw" required="required" size="20"/>
+            <p>請輸入新密碼</p><input type="password" name="npw" required="required" size="20"/>
+            <p>再次輸入新密碼</p><input type="password" name="_npw" required="required" size="20"/><br>
             <button type="submit" style="padding: 1%; margin-top: 1%;"><i class="fa-solid fa-check fa-2xl"></i></button>
         </form>
     </div>
     {% endif %}
     <div class="clear"></div>
-
+    <div style="height: 40px;"></div>
     <div style="text-align: center; position: fixed;z-index: 1;bottom: 0px; width:100%; background-color: white; padding: 1%;">
         <a class="vertical1" href="https://tioj.ck.tp.edu.tw/users/gary940610">TIOJ</a>
         <a class="vertical1" href="https://codeforces.com/profile/gary940610">codeforces</a>

@@ -5,13 +5,11 @@ body{
 }
 a{
     text-decoration: none;
-    color: rgb(0, 169, 199);
-    margin-left: 6px;
-    margin-bottom: 20px;
+    color: rgb(42, 65, 192);
 }
 a:hover{
-    text-decoration: blue;
-    color:rgb(0, 210, 255)
+    text-decoration: none;
+    color:rgba(42, 65, 192, 0.813);
 }
 ul{
     list-style: none;
@@ -19,7 +17,6 @@ ul{
     padding: 0%;
 }
 button{
-    display: inline-block;
     border-width: 0px;
     border-radius: 7px;
 }
@@ -67,4 +64,18 @@ hr{
 }
 .vertical1{
     padding: 7px;
+}
+.blocks {
+    padding-bottom: 4%;
+    padding-top: 1%;
+    height: 10px;
+    width: 100%;
+    margin-bottom: 2%;
+    font-size: x-large;
+    background-color: rgba(133, 124, 124, 0);
+    border-width: 1px;
+    border-radius: 3px;
+}
+.blocks:hover {
+    background-color: rgb(106, 217, 191);
 }
