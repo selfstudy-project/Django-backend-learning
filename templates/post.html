@@ -49,9 +49,11 @@
     </div>
     <div class="clear"></div>
     <hr>
-    <div class="middiv" >
+    <div class="middiv">
         {% for p in problem %}
-        <a href="{% url 'page' p.id %}">{{p.title}}</a><br>
+        <button class="blocks" onclick="window.location.href='{% url 'page' p.id %}'">
+            {{p.title}}
+        </button>
         {% endfor %}
     </div>
     <div class="clear"></div>

@@ -69,3 +69,17 @@ hr{
 a{
     cursor: pointer;
 }
+.blocks {
+    padding-bottom: 4%;
+    padding-top: 1%;
+    height: 10px;
+    width: 100%;
+    margin-bottom: 2%;
+    font-size: x-large;
+    background-color: rgba(133, 124, 124, 0);
+    border-width: 1px;
+    border-radius: 3px;
+}
+.blocks:hover {
+    background-color: rgb(106, 217, 191);
+}
